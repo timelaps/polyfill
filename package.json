@@ -1,0 +1,23 @@
+{
+  "name": "polyfill",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.test.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/timelaps/polyfill.git"
+  },
+  "keywords": [],
+  "author": "Michael McLaughlin <michael@gospecless.com> (https://gospecless.com)",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/timelaps/polyfill/issues"
+  },
+  "homepage": "https://github.com/timelaps/polyfill#readme",
+  "dependencies": {
+    "@timelaps/string": "^1.0.1"
+  }
+}

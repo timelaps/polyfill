@@ -1,5 +1,7 @@
+var nowShim = require('../now');
+var capitalize = require('@timelaps/string/capitalize');
 module.exports = function shim(global) {
-    var lastTime, x = 0,
+    var lastTime, now, x = 0,
         LENGTH = 'length',
         vendors = ['webkit', 'o', 'moz', 'ms'],
         ANIMATION_FRAME = 'AnimationFrame',
@@ -12,6 +14,7 @@ module.exports = function shim(global) {
         global[CANCEL_ANIMATION_FRAME] = global[vendors[x] + UP_CANCEL_ANIMATION_FRAME];
     }
     if (!global[REQUEST_ANIMATION_FRAME]) {
+        now = nowShim(global);
         global[REQUEST_ANIMATION_FRAME] = function (callback) {
             var currTime = now(),
                 timeToCall = Math.max(0, 16 - (currTime - lastTime)),
@@ -28,11 +31,3 @@ module.exports = function shim(global) {
         };
     }
 };
-
-function capitalize(string) {
-    return string && string[0].toUpperCase() + string.slice(1);
-}
-
-function now() {
-    return +(new Date());
-}

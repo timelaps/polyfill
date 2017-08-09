@@ -1,10 +1,13 @@
-var reduce = require('@timelaps/array/reduce');
-var toArray = require('@timelaps/to/array');
-module.exports = reduce(toArray('trace,warn,log,dir,error,clear,table,profile,profileEnd,time,timeEnd,timeStamp'), function (memo, key) {
-    var method = memo[key];
-    if (!method) {
-        memo[key] = function () {
-            return memo.log(toArray(arguments));
-        };
+module.exports = function console(global) {
+    var console = global.console || {};
+    var list = 'trace,warn,log,dir,error,clear,table,profile,profileEnd,time,timeEnd,timeStamp'.split(',');
+    for (var i = 0; i < list.length; i++) {
+        if (!console[list[i]]) {
+            console[key] = logShim;
+        }
     }
-}, global.console);
+
+    function logShim() {
+        return console.log(arguments);
+    }
+};

@@ -1,4 +1,4 @@
-module.exports = function (global) {
+module.exports = function now(global) {
     var performance = require('performance')(global, true);
     var time = require('time');
     var now = time.now;
