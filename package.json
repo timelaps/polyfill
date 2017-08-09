@@ -1,5 +1,5 @@
 {
-  "name": "polyfill",
+  "name": "@timelaps/polyfill",
   "version": "1.0.1",
   "description": "",
   "main": "index.js",
