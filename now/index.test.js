@@ -1,5 +1,5 @@
 var b = require('@timelaps/batterie');
-var now = require('.');
+var now = require('.')(global);
 b.describe('date.now', function () {
     b.expect(now).toBeFunction();
     b.it('gives the time in number form', function (t) {

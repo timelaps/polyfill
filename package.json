@@ -20,5 +20,8 @@
   "homepage": "https://github.com/timelaps/polyfill#readme",
   "dependencies": {
     "@timelaps/string": "^1.0.1"
+  },
+  "devDependencies": {
+    "@timelaps/batterie": "^1.0.71"
   }
 }

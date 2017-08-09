@@ -1,7 +1,8 @@
+var timeshim = require('../../now');
+var offset = require('../offset');
 module.exports = function now(global) {
-    var performance = require('performance')(global, true);
-    var time = require('time');
-    var now = time.now;
+    var performance = require('..')(global, true);
+    var now = timeshim(global);
     if (!performance.now) {
         performance.now = (global.process ? (function () {
             var uptime = process.uptime;
@@ -9,7 +10,7 @@ module.exports = function now(global) {
                 return uptime() / 1000;
             };
         }()) : (performance.mozNow || performance.msNow || performance.oNow || performance.webkitNow || (function () {
-            var then = time.offset;
+            var then = offset;
             return function () {
                 return now() - then;
             };
