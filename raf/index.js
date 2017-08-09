@@ -1,5 +1,4 @@
 var nowShim = require('../now');
-var capitalize = require('@timelaps/string/capitalize');
 module.exports = function shim(global) {
     var lastTime, now, x = 0,
         LENGTH = 'length',
@@ -31,3 +30,7 @@ module.exports = function shim(global) {
         };
     }
 };
+
+function capitalize(str) {
+    return str && str[0].toUpperCase() + str.slice(1);
+}
