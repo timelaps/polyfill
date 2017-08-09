@@ -18,7 +18,9 @@
     "url": "https://github.com/timelaps/polyfill/issues"
   },
   "homepage": "https://github.com/timelaps/polyfill#readme",
-  "dependencies": {},
+  "dependencies": {
+    "@timelaps/hacks": "^1.0.1"
+  },
   "devDependencies": {
     "@timelaps/batterie": "^1.0.71"
   }
