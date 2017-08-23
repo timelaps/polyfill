@@ -3,9 +3,10 @@ var PROTOTYPE = 'prototype';
 var isInstance = require('@timelaps/is/instance');
 var isFunction = require('@timelaps/is/function');
 module.exports = function (global) {
-    var Function = global.Function;
-    if (!Function[PROTOTYPE].bind) {
-        Function[PROTOTYPE].bind = function (context) {
+    var bind, Function = global.Function,
+        proto = Function[PROTOTYPE];
+    if (!(bind = proto.bind)) {
+        bind = proto.bind = function (context) {
             if (!isFunction(this)) {
                 // closest thing possible to the ECMAScript 5
                 // internal IsCallable function
@@ -25,4 +26,5 @@ module.exports = function (global) {
             return fBound;
         };
     }
+    return bind;
 };
