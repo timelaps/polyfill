@@ -20,6 +20,7 @@
   "homepage": "https://github.com/timelaps/polyfill#readme",
   "dependencies": {
     "@timelaps/hacks": "^1.0.1",
+    "@timelaps/number": "^1.0.3",
     "document-register-element": "^1.7.0"
   },
   "devDependencies": {
