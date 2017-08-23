@@ -1,25 +1,29 @@
+var isUndefined = require('@timelaps/is/undefined');
+var isNull = require('@timelaps/is/null');
+var isFunction = require('@timelaps/is/function');
 module.exports = function (global) {
-    var Object = global.Object;
+    var create, Object = global.Object;
     var PROTO = '__proto__';
-    if (typeof Object.create !== 'function') {
-        Object.create = (function (undefined) {
+    if (!isFunction((create = Object.create))) {
+        create = Object.create = (function (undefined) {
             var TMP = function () {};
             return function (prototype, propertiesObject) {
-                if (prototype !== Object(prototype) && prototype !== NULL) {
-                    throw TypeError('Argument must be an object, or ' + NULL);
+                if (prototype !== Object(prototype) && !isNull(prototype)) {
+                    throw TypeError('Argument must be an object, or ' + null);
                 }
                 TMP[PROTOTYPE] = prototype || {};
                 var result = new TMP();
-                TMP[PROTOTYPE] = NULL;
-                if (propertiesObject !== UNDEFINED) {
+                TMP[PROTOTYPE] = null;
+                if (!isUndefined(propertiesObject)) {
                     Object.defineProperties(result, propertiesObject);
                 }
-                // to imitate the case of Object.create(NULL)
-                if (prototype === NULL) {
-                    result[PROTO] = NULL;
+                // to imitate the case of Object.create(null)
+                if (isNull(prototype)) {
+                    result[PROTO] = null;
                 }
                 return result;
             };
         })();
     }
+    return create;
 };
