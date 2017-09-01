@@ -1,5 +1,6 @@
 module.exports = performance;
 var now = require('./now');
+
 function performance(global, adding) {
     var PERFORMANCE = 'performance';
     var perf = global[PERFORMANCE];
