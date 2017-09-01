@@ -5,7 +5,7 @@ module.exports = function now(global) {
     if (!performance.now) {
         performance.now = (global.process ? (function () {
             return function () {
-                return process.uptime();
+                return process.uptime() * 1000;
             };
         }()) : (performance.mozNow || performance.msNow || performance.oNow || performance.webkitNow || (function () {
             var now = timeshim(global);
