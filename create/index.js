@@ -1,7 +1,9 @@
 var isUndefined = require('@timelaps/is/undefined');
 var isNull = require('@timelaps/is/null');
 var isFunction = require('@timelaps/is/function');
-module.exports = function (global) {
+module.exports = create;
+
+function create(global) {
     var create, Object = global.Object;
     var PROTO = '__proto__';
     if (!isFunction((create = Object.create))) {
@@ -26,4 +28,4 @@ module.exports = function (global) {
         })();
     }
     return create;
-};
+}

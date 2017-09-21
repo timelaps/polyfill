@@ -1,4 +1,6 @@
-module.exports = function matchMedia(global) {
+module.exports = matchMedia;
+
+function matchMedia(global) {
     if (!global.matchMedia) {
         global.matchMedia = function () {
             // "use strict";
@@ -38,4 +40,4 @@ module.exports = function matchMedia(global) {
             };
         }();
     }
-};
+}

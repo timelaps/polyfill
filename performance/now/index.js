@@ -1,7 +1,7 @@
 var timeshim = require('../../now');
 var offset = require('../offset');
 module.exports = function now(global) {
-    var performance = require('..')(global, true);
+    var performance = require('../')(global, true);
     if (!performance.now) {
         performance.now = (global.process ? (function () {
             return function () {
